@@ -1,0 +1,60 @@
+k2hdkc-java (1.1.2) stable; urgency=low
+
+  * Re-implements the execute method
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Thu, 23 Jan 2020 06:24:47 +0000
+
+k2hdkc-java (1.1.1) stable; urgency=low
+
+  * Suppresses uncheck warnings
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Wed, 22 Jan 2020 01:47:48 +0000
+
+k2hdkc-java (1.1.0) stable; urgency=low
+
+  * Introduces Parameterized Result class
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Tue, 21 Jan 2020 06:47:02 +0000
+
+k2hdkc-java (1.0.6) stable; urgency=low
+
+  * GitHub Actions
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Thu, 16 Jan 2020 06:15:26 +0000
+
+k2hdkc-java (1.0.5) stable; urgency=low
+
+  * Bumps up version
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Wed, 15 Jan 2020 11:15:49 +0000
+
+k2hdkc-java (1.0.4) stable; urgency=low
+
+  * Bumps up version
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Wed, 15 Jan 2020 10:54:23 +0900
+
+k2hdkc-java (1.0.3) stable; urgency=low
+
+  * Updates tests
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Tue, 14 Jan 2020 16:00:08 +0900
+
+k2hdkc-java (1.0.2) stable; urgency=low
+
+  * Fixes start_server.sh 
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Fri, 10 Jan 2020 16:35:00 +0900
+
+k2hdkc-java (1.0.1) stable; urgency=low
+
+  * Fixes infinit loop test cases.
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Wed, 8 Jan 2020 18:38:26 +0900
+
+k2hdkc-java (1.0.0) stable; urgency=low
+
+  * Initial Release
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Fri, 14 Sep 2018 02:48:55 +0900
+
