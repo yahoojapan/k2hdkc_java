@@ -41,16 +41,3 @@ jobs:
       if: github.event_name == 'release'
       run: mvn -B deploy --file pom.xml
 
-    - name: Build docs
-      env:
-        GITHUB_ACTOR: ${{ github.actor }}
-        GITHUB_PASSWORD: ${{ secrets.GITHUB_PASSWORD }}
-      run: mvn -B site --file pom.xml -s $GITHUB_WORKSPACE/settings.xml
-
-    - name: Request Github Pages build job
-      run: >-
-        curl -L -X POST 
-        -H "Content-Type: application/json"
-        -H "Authorization: token ${{ secrets.GH_PAT}}"
-        "https://api.github.com/repos/${{ github.repository }}/pages/builds"
-
