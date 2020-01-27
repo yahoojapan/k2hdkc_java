@@ -1,5 +1,7 @@
 k2hdkc_java
 ------
+![](https://github.com/yahoojapan/k2hdkc_java/workflows/.github/workflows/build/badge.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/yahoojapan/k2hdkc_nodejs/master/LICENSE)
 
 ### Overview
 
@@ -47,12 +49,23 @@ Clone this repository and go into the directory, then run the following command.
 $ mvn clean exec:exec package
 ```
 
+### Documents
+  - [Document top page](https://java.k2hdkc.antpick.ax/)
+  - [About K2HDKC](https://k2hdkc.antpick.ax/)
+  - [About AntPickax](https://antpick.ax/)
+
+### Packages
+
+  - [GitHub Packages](https://github.com/yahoojapan/k2hdkc_java/packages)
+
 ### License
 
 MIT License. See the LICENSE file.
 
 ## AntPickax
 
-[AntPickax](https://antpick.ax/) is an open source team in [Yahoo Japan Corporation](https://about.yahoo.co.jp/info/en/company/) that is also a product family of open source software developed by [AntPickax](https://antpick.ax/).
+[AntPickax](https://antpick.ax/) is 
+  - an open source team in [Yahoo Japan Corporation](https://about.yahoo.co.jp/info/en/company/). 
+  - a product family of open source software developed by [AntPickax](https://antpick.ax/).
 
 
