@@ -5,7 +5,8 @@ k2hdkc_java
 
 ### Overview
 
-k2hdkc_java is an official java driver for [k2hdkc](https://k2hdkc.antpick.ax/), which is a highly available and scalable distributed KVS clustering system.
+k2hdkc_java is an official java driver for [k2hdkc](https://k2hdkc.antpick.ax/).
+ - K2HDKC - K2Hash based Distributed Kvs Cluster by Yahoo! JAPAN
 
 ### Install
 
