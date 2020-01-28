@@ -1,6 +1,6 @@
 k2hdkc_java
 ------
-[![](https://github.com/actions/yahoojapan/k2hdkc_java/workflows/.github/workflows/build/badge.svg)](https://github.com/yahoojapan/k2hdkc_java/actions)
+[![Actions Status](https://github.com/yahoojapan/k2hdkc_java/workflows/CI/badge.svg)](https://github.com/yahoojapan/k2hdkc_java/actions)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/yahoojapan/k2hdkc_nodejs/master/LICENSE)
 
 ### Overview
