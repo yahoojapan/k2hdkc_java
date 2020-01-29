@@ -25,6 +25,12 @@
       <organization>Yahoo Japan Corporation</organization>
       <organizationUrl>https://www.yahoo.co.jp</organizationUrl>
     </developer>
+    <developer>
+      <name>Takeshi Nakatani</name>
+      <email>ggtakec@gmail.com</email>
+      <organization>Yahoo Japan Corporation</organization>
+      <organizationUrl>https://www.yahoo.co.jp</organizationUrl>
+    </developer>
   </developers>
 
   <scm>
