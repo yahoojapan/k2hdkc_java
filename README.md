@@ -52,6 +52,7 @@ $ mvn clean exec:exec package
 
 ### Documents
   - [Document top page](https://java.k2hdkc.antpick.ax/)
+  - [API Document page](https://java.k2hdkc.antpick.ax/apidocs/index.html)
   - [About K2HDKC](https://k2hdkc.antpick.ax/)
   - [About AntPickax](https://antpick.ax/)
 
