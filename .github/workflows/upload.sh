@@ -103,7 +103,7 @@ logger -t ${TAG} -p user.debug "TARGET_FILE:${TARGET_FILE} ASSET_FILE_NAME:${ASS
 # API SPEC
 # https://developer.github.com/v3/repos/releases/#upload-a-release-asset
 # Note: curl exits with zero if the jar file already exists.
-curl --request PATCH -L# --data-binary @"${TARGET_FILE}" -H "Authorization: token ${GITHUB_TOKEN}" -H "Content-Type: application/octet-stream" ${UPLOAD_URL_WITH_QUERY}
+curl -s --request PATCH -L# --data-binary @"${TARGET_FILE}" -H "Authorization: token ${GITHUB_TOKEN}" -H "Content-Type: application/octet-stream" ${UPLOAD_URL_WITH_QUERY}
 RET=${?}
 if test "${RET}" != "0"; then
     logger -t ${TAG} -p user.error "GitHub API upload-a-release-asset returned error."
