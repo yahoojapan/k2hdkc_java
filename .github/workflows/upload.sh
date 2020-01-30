@@ -60,7 +60,7 @@ fi
 # API SPEC
 # https://developer.github.com/v3/repos/releases/#get-the-latest-release
 TEMP_FILE=$(mktemp)
-curl -sH "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/hiwakaba/k2hdkc_java/releases/latest" -o ${TEMP_FILE}
+curl -sH "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/yahoojapan/k2hdkc_java/releases/latest" -o ${TEMP_FILE}
 if test "${?}" != "0"; then
     logger -t ${TAG} -p user.error "GitHub API get-the-latest-release returned error."
     rm -f ${TEMP_FILE}
