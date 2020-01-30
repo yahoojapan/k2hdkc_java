@@ -41,3 +41,8 @@ jobs:
       if: github.event_name == 'release'
       run: mvn -B deploy --file pom.xml
 
+    - name: Upload a jar file to asset
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      if: github.event_name == 'release'
+      run: mvn -B exec:exec --file pom.xml -Pupload
