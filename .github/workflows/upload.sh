@@ -43,6 +43,7 @@ set -u
 umask 022
 
 # environments
+REPOSITORY_PATH=yahoojapan/k2hdkc_java
 SRCDIR=$(cd $(dirname "$0") && pwd)
 DEBUG=1
 if test "${DEBUG}" -eq 1; then
@@ -60,7 +61,7 @@ fi
 # API SPEC
 # https://developer.github.com/v3/repos/releases/#get-the-latest-release
 TEMP_FILE=$(mktemp)
-curl -sH "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/yahoojapan/k2hdkc_java/releases/latest" -o ${TEMP_FILE}
+curl -sH "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/repos/${REPOSITORY_PATH}/releases/latest" -o ${TEMP_FILE}
 if test "${?}" != "0"; then
     logger -t ${TAG} -p user.error "GitHub API get-the-latest-release returned error."
     rm -f ${TEMP_FILE}
@@ -104,6 +105,22 @@ logger -t ${TAG} -p user.debug "TARGET_FILE:${TARGET_FILE} ASSET_FILE_NAME:${ASS
 # https://developer.github.com/v3/repos/releases/#upload-a-release-asset
 # Note: curl exits with zero if the jar file already exists.
 curl -s --request PATCH -L# --data-binary @"${TARGET_FILE}" -H "Authorization: token ${GITHUB_TOKEN}" -H "Content-Type: application/octet-stream" ${UPLOAD_URL_WITH_QUERY}
+RET=${?}
+if test "${RET}" != "0"; then
+    logger -t ${TAG} -p user.error "GitHub API upload-a-release-asset returned error."
+else
+    logger -t ${TAG} -p user.info "GitHub API upload-a-release-asset success"
+fi
+
+POM_FILE="./pom.xml"
+if ! test -f "${POM_FILE}"; then
+    logger -t ${TAG} -p user.error "${POM_FILE} doesn't exist, which should exist."
+    rm -f ${TEMP_FILE}
+    exit 1
+fi
+POM_ASSET_FILE_NAME="k2hdkc-${TAG_NAME}.pom"
+POM_UPLOAD_URL_WITH_QUERY=$(echo ${UPLOAD_URL} | perl -pe "s|{\?name,label}|?name=${POM_ASSET_FILE_NAME}|g")
+curl -s --request PATCH -L# --data-binary @"${POM_FILE}" -H "Authorization: token ${GITHUB_TOKEN}" -H "Content-Type: application/xml" ${POM_UPLOAD_URL_WITH_QUERY}
 RET=${?}
 if test "${RET}" != "0"; then
     logger -t ${TAG} -p user.error "GitHub API upload-a-release-asset returned error."
