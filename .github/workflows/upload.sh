@@ -43,7 +43,7 @@ set -u
 umask 022
 
 # environments
-REPOSITORY_PATH=yahoojapan/k2hdkc_java
+REPOSITORY_PATH=${GITHUB_REPOSITORY}
 SRCDIR=$(cd $(dirname "$0") && pwd)
 DEBUG=1
 if test "${DEBUG}" -eq 1; then
@@ -55,6 +55,12 @@ fi
 # GITHUB_TOKEN should be defined.
 if test -z "${GITHUB_TOKEN}"; then
     logger -t ${TAG} -p user.error "No GITHUB_TOKEN variable defined."
+    exit 1
+fi
+# GITHUB_REPOSITORY should be defined.
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables
+if test -z "${GITHUB_REPOSITORY}"; then
+    logger -t ${TAG} -p user.error "No GITHUB_REPOSITORY variable defined."
     exit 1
 fi
 
