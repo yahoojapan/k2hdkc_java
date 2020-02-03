@@ -46,3 +46,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       if: github.event_name == 'release'
       run: mvn -B exec:exec --file pom.xml -Pupload
+
+    - name: Deploy the docs to github
+      env:
+        GITPAGES_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKE_FOR_GITPAGES }}
+      if: github.event_name == 'release'
+      run: mvn -B site --file pom.xml -s settings.xml
