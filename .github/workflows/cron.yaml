@@ -1,24 +1,11 @@
-name: CI
-
+name: Periodic build for compatibility problems detection
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-  # Trigger the workflow on release,
-  # but only when published
-  release:
-    types:
-      - published
+  schedule:
+    - cron:  '0 0 * * 1'
 
 jobs:
   build:
 
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]') && ! contains(toJSON(github.event.commits.*.message), '[ci skip]')"
     runs-on: ubuntu-latest
 
     steps:
