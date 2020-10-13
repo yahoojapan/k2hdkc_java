@@ -58,7 +58,7 @@
     <jna-platform.version>5.5.0</jna-platform.version>
     <logback-core.version>1.2.3</logback-core.version>
     <logback-classic.version>1.2.3</logback-classic.version>
-    <junit.version>4.13</junit.version>
+    <junit.version>4.13.1</junit.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
