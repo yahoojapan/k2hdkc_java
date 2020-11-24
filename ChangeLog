@@ -1,9 +1,14 @@
+k2hdkc-java (1.1.7) stable; urgency=low
+
+  *  Updates setup-java 1.4.3
+
+ -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Tue, 24 Nov 2020 11:07:38 +0900
+
 k2hdkc-java (1.1.6) stable; urgency=low
 
   *  Generates GitPages on released
 
  -- Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>  Mon, 03 Feb 2020 00:36:37 +0000
-
 k2hdkc-java (1.1.5) stable; urgency=low
 
   *  Uploads a pom file to assets
