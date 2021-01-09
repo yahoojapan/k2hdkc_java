@@ -10,32 +10,7 @@ k2hdkc_java is an official java driver for [k2hdkc](https://k2hdkc.antpick.ax/).
 
 ### Install
 
-Add the following repository and the dependency to your pom.xml or settings.xml.
-```
-  <activeProfiles>
-    <activeProfile>github</activeProfile>
-  </activeProfiles>
-
-  <profiles>
-    <profile>
-      <id>github</id>
-      <repositories>
-        <repository>
-          <id>central</id>
-          <url>https://repo1.maven.org/maven2</url>
-          <releases><enabled>true</enabled></releases>
-          <snapshots><enabled>false</enabled></snapshots>
-        </repository>
-        <repository>
-          <id>github</id>
-          <name>GitHub yahoojapan Apache Maven Packages</name>
-          <url>https://maven.pkg.github.com/yahoojapan/k2hdkc_java</url>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
-
-```
+Add the following dependency to your pom.xml.
 ```
         <dependency>
           <groupId>ax.antpick</groupId>
@@ -58,7 +33,7 @@ $ mvn clean exec:exec package
 
 ### Packages
 
-  - [GitHub Packages](https://github.com/yahoojapan/k2hdkc_java/packages)
+  - [Maven Central Repository](https://mvnrepository.com/artifact/ax.antpick/k2hdkc)
 
 ### License
 
