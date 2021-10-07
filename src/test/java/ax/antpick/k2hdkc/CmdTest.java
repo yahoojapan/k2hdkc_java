@@ -28,7 +28,9 @@
  */
 package ax.antpick.k2hdkc;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.sun.jna.*;
 import java.io.ByteArrayOutputStream;
@@ -39,25 +41,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.*;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /** Unit test for simple App. */
-public class CmdTest extends TestCase {
+public class CmdTest {
   private static final Logger logger = LoggerFactory.getLogger(CmdTest.class);
   private static final String SLAVE_CLUSTER_CONFIG = "cluster/slave.yaml";
   private static final String[] TEST_KEY_ARRAY = {"testGetValueArg1", "testSetValueArg2"};
 
-  /** @return the suite of tests being tested */
-  public static Test suite() {
-    return new TestSuite(CmdTest.class);
-  }
-
-  @Override
-  protected void setUp() {
+  @BeforeEach
+  public void setUp() {
     File fileDb = new File(SLAVE_CLUSTER_CONFIG);
     if (!fileDb.exists()) {
       assertTrue(false);
@@ -91,13 +90,13 @@ public class CmdTest extends TestCase {
     }
   }
 
-  @Override
-  protected void tearDown() {
+  @AfterEach
+  public void tearDown() {
     // if any
   }
 
   /** GetCmd */
-  @org.junit.Test
+  @Test
   public void testGetValueArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -112,13 +111,14 @@ public class CmdTest extends TestCase {
       assertTrue(get.execute(sess).get().isSuccess());
       String str = (String) get.execute(sess).get().getValue();
       assertTrue(str.equals("testGetValueArg1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** SetCmd */
-  @org.junit.Test
+  @Test
   public void testSetValueArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -133,13 +133,14 @@ public class CmdTest extends TestCase {
       assertTrue(get.execute(sess).get().isSuccess());
       String str = (String) get.execute(sess).get().getValue();
       assertTrue(str.equals("testSetValueArg2"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** SetSubkeysCmd */
-  @org.junit.Test
+  @Test
   public void testSetSubkeysArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -157,13 +158,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list = get.execute(sess);
       Result<List<String>> res = list.get();
       assertTrue(res.getValue().get(0).equals("testSetSubkeysArg2"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** GetSubkeysCmd */
-  @org.junit.Test
+  @Test
   public void testGetSubkeysArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -181,13 +183,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list = get.execute(sess);
       Result<List<String>> res = list.get();
       assertTrue(res.getValue().get(0).equals("testGetSubkeysArg2"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** ClearSubkeysCmd */
-  @org.junit.Test
+  @Test
   public void testClearSubkeysArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -201,13 +204,14 @@ public class CmdTest extends TestCase {
       assertTrue(clear != null);
       assertTrue(clear.execute(sess) != null);
       assertTrue(clear.execute(sess).get().isSuccess());
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** AddSubkeyCmd */
-  @org.junit.Test
+  @Test
   public void testAddSubkeyArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -234,13 +238,14 @@ public class CmdTest extends TestCase {
       assertTrue(res.getValue().get(0).equals("subkey1"));
       assertTrue(res.getValue().get(1).equals("subkey2"));
       assertTrue(res.getValue().get(2).equals("subkey3"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** RemoveSubkeyCmd */
-  @org.junit.Test
+  @Test
   public void testRemoveSubkeyArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -276,13 +281,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list2 = getsub2.execute(sess);
       Result<List<String>> res2 = list.get();
       assertTrue(res2.getValue().get(0).equals("subkey1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** GetAttrsCmd */
-  @org.junit.Test
+  @Test
   public void testGetAttrsArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -290,13 +296,14 @@ public class CmdTest extends TestCase {
       assertTrue(get != null);
       assertTrue(get.execute(sess) != null);
       assertTrue(get.execute(sess).isPresent() == false);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** RemoveCmd */
-  @org.junit.Test
+  @Test
   public void testRemoveCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -314,13 +321,14 @@ public class CmdTest extends TestCase {
       assertTrue(rm != null);
       assertTrue(rm.execute(sess) != null);
       assertTrue(rm.execute(sess).get().isSuccess());
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** RenameCmd */
-  @org.junit.Test
+  @Test
   public void testRenameCmdArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -346,13 +354,14 @@ public class CmdTest extends TestCase {
       assertTrue(get2.execute(sess).get().isSuccess());
       String str2 = (String) get2.execute(sess).get().getValue();
       assertTrue(str2.equals("testRenameCmdArg2"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** SetAllCmd */
-  @org.junit.Test
+  @Test
   public void testSetAllArg3() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -375,13 +384,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list = getsubkeys.execute(sess);
       Result<List<String>> res = list.get();
       assertTrue(res.getValue().get(0).equals("testSetAllArg3"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** CasInitCmd */
-  @org.junit.Test
+  @Test
   public void testCasInitCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -389,13 +399,14 @@ public class CmdTest extends TestCase {
       assertTrue(init != null);
       assertTrue(init.execute(sess) != null);
       assertTrue(init.execute(sess).get().isSuccess());
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** CasSetCmd */
-  @org.junit.Test
+  @Test
   public void testCasSetCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -407,8 +418,9 @@ public class CmdTest extends TestCase {
       assertTrue(set != null);
       assertTrue(set.execute(sess) != null);
       assertTrue(set.execute(sess).get().isSuccess());
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
@@ -430,7 +442,7 @@ public class CmdTest extends TestCase {
   }
 
   /** CasGetCmd */
-  @org.junit.Test
+  @Test
   public void testCasGetCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -448,13 +460,14 @@ public class CmdTest extends TestCase {
       assertTrue(get.execute(sess).get().isSuccess());
       ByteArrayOutputStream bos = (ByteArrayOutputStream) get.execute(sess).get().getValue();
       assertTrue(getValusAsInt(bos.toByteArray()) == 1);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** CasIncDecCmd */
-  @org.junit.Test
+  @Test
   public void testCasIncDecCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -486,13 +499,14 @@ public class CmdTest extends TestCase {
           assertTrue(getValusAsInt(bos.toByteArray()) == 1);
         }
       }
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** QueueAddCmd */
-  @org.junit.Test
+  @Test
   public void testQueueAddCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -504,13 +518,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list = qrm.execute(sess);
       Result<List<String>> res = list.get();
       assertTrue(res.getValue().get(0).equals("q1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** QueueRemoveCmd */
-  @org.junit.Test
+  @Test
   public void testQueueRemoveCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -522,13 +537,14 @@ public class CmdTest extends TestCase {
       Optional<Result<List<String>>> list = qrm.execute(sess);
       Result<List<String>> res = list.get();
       assertTrue(res.getValue().get(0).equals("q1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** KeyQueueAddCmd */
-  @org.junit.Test
+  @Test
   public void testKeyQueueAddCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -541,13 +557,14 @@ public class CmdTest extends TestCase {
       Result<Map<String, String>> res = map.get();
       assertTrue(res.getValue().containsKey("key1"));
       assertTrue(res.getValue().containsValue("val1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** KeyQueueRemoveCmd */
-  @org.junit.Test
+  @Test
   public void testKeyQueueRemoveCmdArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -560,8 +577,9 @@ public class CmdTest extends TestCase {
       Result<Map<String, String>> res = map.get();
       assertTrue(res.getValue().containsKey("key1"));
       assertTrue(res.getValue().containsValue("val1"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 }
