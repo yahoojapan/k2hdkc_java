@@ -28,88 +28,79 @@
  */
 package ax.antpick.k2hdkc;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.sun.jna.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.stream.*;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /** Unit test for simple App. */
-public class ClusterTest extends TestCase {
+public class ClusterTest {
   private static final Logger logger = LoggerFactory.getLogger(ClusterTest.class);
   private static final String SLAVE_CLUSTER_CONFIG = "cluster/slave.yaml";
   private static final String[] TEST_KEY_ARRAY = {"testGetValueArg1", "testSetValueArg2"};
 
-  /**
-   * Create the test case
-   *
-   * @param testName name of the test case
-   */
-  public ClusterTest(String testName) {
-    super(testName);
-  }
-
-  /** @return the suite of tests being tested */
-  public static Test suite() {
-    return new TestSuite(ClusterTest.class);
-  }
-
-  @Override
-  protected void setUp() {
+  @BeforeEach
+  public void setUp() {
     File fileDb = new File(SLAVE_CLUSTER_CONFIG);
     if (!fileDb.exists()) {
       assertTrue(false);
     }
   }
 
-  @Override
-  protected void tearDown() {
+  @AfterEach
+  public void tearDown() {
     // if any
   }
 
   /** K2hdkc Constructor */
-  @org.junit.Test
+  @Test
   public void testOfArg1() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       cluster.toString(); // calls blar blar method to suppress "never referenced" warnings
       assertTrue(true);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Constructor */
-  @org.junit.Test
+  @Test
   public void testOfArg2() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG, Cluster.DEFAULT_PORT)) {
       cluster.toString(); // calls blar blar method to suppress "never referenced" warnings
       assertTrue(true);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Constructor */
-  @org.junit.Test
+  @Test
   public void testOfArg3() {
     try (Cluster cluster =
         Cluster.of(SLAVE_CLUSTER_CONFIG, Cluster.DEFAULT_PORT, Cluster.DEFAULT_CUK)) {
       cluster.toString(); // calls blar blar method to suppress "never referenced" warnings
       assertTrue(true);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Constructor */
-  @org.junit.Test
+  @Test
   public void testOfArg5() {
     try (Cluster cluster =
         Cluster.of(
@@ -121,24 +112,26 @@ public class ClusterTest extends TestCase {
             Cluster.DEFAULT_CLEANUP)) {
       cluster.toString(); // calls blar blar method to suppress "never referenced" warnings
       assertTrue(true);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster initNativeLog */
-  @org.junit.Test
+  @Test
   public void testOfInitNativeLog() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       cluster.initNativeLog();
       assertTrue(true);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster enableNativeLogArg3 */
-  @org.junit.Test
+  @Test
   public void testOfEnableNativeLog3() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG);
         Session sess = Session.of(cluster); ) {
@@ -153,28 +146,30 @@ public class ClusterTest extends TestCase {
           Cluster.NativeLogLevel.SeverityInfo);
       Path path = Paths.get("/tmp/native.log");
       if (!path.toFile().exists()) {
-        assertTrue("nativelog must be created", false);
+	logger.error("nativelog must be created");
+        assertTrue(false);
       }
-    } catch (IOException ex) {
-      logger.error("message {}", ex.getMessage());
-      // assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      logger.error("message {}", e.getMessage());
+      assertTrue(true);
     }
   }
 
   /** K2hdkc Cluster setValue */
-  @org.junit.Test
+  @Test
   public void testOfSetValue() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       assertTrue(cluster.remove("testOfSetValue"));
       assertTrue(cluster.set("testOfSetValue", "testOfSetValue"));
       assertTrue(cluster.get("testOfSetValue").get().equals("testOfSetValue"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster setValue */
-  @org.junit.Test
+  @Test
   public void testOfGetValue() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       /*
@@ -186,13 +181,14 @@ public class ClusterTest extends TestCase {
       assertTrue(cluster.remove("testOfGetValue"));
       assertTrue(cluster.set("testOfGetValue", "testOfGetValue"));
       assertTrue(cluster.get("testOfGetValue").get().equals("testOfGetValue"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster setSubkeys */
-  @org.junit.Test
+  @Test
   public void testOfSetSubkeys() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       assertTrue(cluster.clearSubkeys("testOfSetSubkeys"));
@@ -201,13 +197,14 @@ public class ClusterTest extends TestCase {
       assertTrue(cluster.getSubkeys("testOfSetSubkeys").size() == 2);
       assertTrue(cluster.getSubkeys("testOfSetSubkeys").get(0).equals("a"));
       assertTrue(cluster.getSubkeys("testOfSetSubkeys").get(1).equals("b"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster getSubkeys */
-  @org.junit.Test
+  @Test
   public void testOfGetSubkeys() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       assertTrue(cluster.clearSubkeys("testOfGetSubkeys"));
@@ -215,13 +212,14 @@ public class ClusterTest extends TestCase {
       assertTrue(cluster.setSubkeys("testOfGetSubkeys", subkeys));
       assertTrue(cluster.getSubkeys("testOfGetSubkeys").get(0).equals("a"));
       assertTrue(cluster.getSubkeys("testOfGetSubkeys").get(1).equals("b"));
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 
   /** K2hdkc Cluster clearSubkeys */
-  @org.junit.Test
+  @Test
   public void testOfClearSubkeys() {
     try (Cluster cluster = Cluster.of(SLAVE_CLUSTER_CONFIG)) {
       String[] subkeys = {"a", "b"};
@@ -229,8 +227,9 @@ public class ClusterTest extends TestCase {
       assertTrue(cluster.getSubkeys("testOfClearSubkeys").size() == 2);
       assertTrue(cluster.clearSubkeys("testOfClearSubkeys"));
       assertTrue(cluster.getSubkeys("testOfClearSubkeys").size() == 0);
-    } catch (IOException ex) {
-      assertFalse(ex.getMessage(), true);
+    } catch (IOException e) {
+      System.out.println("IOException " + e.getMessage());
+      assertFalse(true);
     }
   }
 }
