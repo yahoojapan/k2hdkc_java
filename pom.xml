@@ -49,6 +49,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- https://github.github.com/maven-plugins/site-plugin/authentication.html -->
     <github.global.server>github</github.global.server>
     <cglib-nodep.version>3.3.0</cglib-nodep.version>
     <jna.version>5.9.0</jna.version>

@@ -3,6 +3,7 @@
   xsi:schemaLocation="https://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd">
 
+  <!-- https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry -->
   <activeProfiles>
     <activeProfile>github</activeProfile>
   </activeProfiles>
