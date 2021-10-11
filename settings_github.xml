@@ -19,6 +19,7 @@
         </repository>
       </repositories>
     </profile>
+  </profiles>
 
   <servers>
     <server>
