@@ -54,6 +54,10 @@ jobs:
         run: |
           mvn ${{ env.COMMON_MAVEN_OPTS }} checkstyle:check
 
+      - name: Run chmpx and k2hdkc
+        run: |
+          sh ./cluster/start_server.sh
+
       - name: Run package on version 8
         if: "matrix.java == '8'"
         run: |
