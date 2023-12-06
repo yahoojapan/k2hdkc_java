@@ -110,7 +110,7 @@ startifnotexist() {
     fi
 }
 
-# Checks if k2hdkc is installed 
+# Checks if k2hdkc is installed
 #
 # Params::
 #   no params
@@ -193,14 +193,14 @@ make_k2hdkc() {
     logger -t ${TAG} -p user.debug "git clone https://github.com/yahoojapan/k2hdkc"
     git clone https://github.com/yahoojapan/k2hdkc
     cd k2hdkc
-    
+
     logger -t ${TAG} -p user.debug "git clone https://github.com/yahoojapan/fullock"
     git clone https://github.com/yahoojapan/fullock
     logger -t ${TAG} -p user.debug "git clone https://github.com/yahoojapan/k2hash"
     git clone https://github.com/yahoojapan/k2hash
     logger -t ${TAG} -p user.debug "git clone https://github.com/yahoojapan/chmpx"
     git clone https://github.com/yahoojapan/chmpx
-    
+
     if ! test -d "fullock"; then
         echo "no fullock"
         exit 1
@@ -210,7 +210,7 @@ make_k2hdkc() {
     ./configure --prefix=/usr
     make
     sudo make install
-    
+
     if ! test -d "../k2hash"; then
         echo "no k2hash"
         exit 1
@@ -220,7 +220,7 @@ make_k2hdkc() {
     ./configure --prefix=/usr ${_configure_opt}
     make
     sudo make install
-    
+
     if ! test -d "../chmpx"; then
         echo "no chmpx"
         exit 1
@@ -230,7 +230,7 @@ make_k2hdkc() {
     ./configure --prefix=/usr ${_configure_opt}
     make
     sudo make install
-    
+
     cd ..
     ./autogen.sh
     ./configure --prefix=/usr ${_configure_opt}
@@ -335,3 +335,13 @@ if test "${?}" = "0"; then
 fi
 
 exit 0
+
+#
+# Local variables:
+# tab-width: 4
+# c-basic-offset: 4
+# indent-tabs-mode: nil
+# End:
+# vim600: noexpandtab sw=4 ts=4 fdm=marker
+# vim<600: noexpandtab sw=4 ts=4
+#
