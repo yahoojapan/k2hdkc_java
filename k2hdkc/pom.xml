@@ -7,12 +7,12 @@
   <parent>
   	<groupId>ax.antpick</groupId>
   	<artifactId>k2hdkc-parent</artifactId>
-  	<version>1.0.6</version>
+  	<version>1.1.8</version>
   </parent>
 
   <artifactId>k2hdkc</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.6</version>
+  <version>1.1.8</version>
 
   <name>k2hdkc library</name>
   <description>An official java driver for k2hdkc, which is a highly available and scalable distributed KVS library.</description>
