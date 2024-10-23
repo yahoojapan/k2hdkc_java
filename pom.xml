@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <artifactId>k2hdkc-parent</artifactId>
   <name>k2hdkc</name>
-  <version>1.0.6</version>
+  <version>1.1.8</version>
   <description>An official java driver for k2hdkc, which is a highly available and scalable distributed KVS library.</description>
   <url>https://github.com/yahoojapan/k2hdkc_java</url>
 
